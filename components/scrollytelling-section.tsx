@@ -12,19 +12,19 @@ type Direction = 'down' | 'right' | 'left'
 const sections = [
   {
     id: 'acompanamiento',
-    title: 'Acompanamiento de Victimas',
+    title: 'Acompañamiento de Víctimas',
     description:
-      'Desde 2021 hemos acompanado a victimas en su busqueda de justicia, brindando asistencia legal y apoyo en cada etapa del proceso judicial.',
+      'Desde 2021 hemos acompañado a víctimas en su búsqueda de justicia, brindando asistencia legal y apoyo en cada etapa del proceso judicial.',
     stats: [
-      { label: 'Casos Acompanados', value: '37', trend: 'Crecimiento sostenido desde 2021' },
+      { label: 'Casos Acompañados', value: '37', trend: 'Crecimiento sostenido desde 2021' },
       { label: 'Asistencia a Juicios', value: '13', trend: 'Presencia activa en tribunales' },
-      { label: 'Victimas Agradecidas', value: '+20', trend: 'Testimonios recibidos en 2025' },
+      { label: 'Víctimas Agradecidas', value: '+20', trend: 'Testimonios recibidos en 2025' },
     ],
     highlights: [
-      'Caso Orono: Primera condena obtenida en 2023',
-      'Caso Pablo Flores: Acompanamiento exitoso',
+      'Caso Oroño: Primera condena obtenida en 2023',
+      'Caso Pablo Flores: Acompañamiento exitoso',
       'Caso Acosta: Condena lograda en 2024',
-      'Base de Datos de Victimas creada en 2025',
+      'Base de Datos de Víctimas creada en 2025',
     ],
     visualization: AcompanamientoViz,
     direction: 'down' as Direction,
@@ -32,19 +32,19 @@ const sections = [
   },
   {
     id: 'capacitacion',
-    title: 'Capacitacion e Investigacion',
+    title: 'Capacitación e Investigación',
     description:
-      'Formamos profesionales en victimologia y generamos conocimiento especializado para transformar el sistema de justicia.',
+      'Formamos profesionales en victimología y generamos conocimiento especializado para transformar el sistema de justicia.',
     stats: [
       { label: 'Personas Capacitadas', value: '518', trend: 'Empleados judiciales en 9 provincias' },
-      { label: 'Jornadas Realizadas', value: '13', trend: 'Eventos academicos 2021-2025' },
+      { label: 'Jornadas Realizadas', value: '13', trend: 'Eventos académicos 2021-2025' },
       { label: 'Publicaciones', value: '5', trend: 'Libros y dossiers especializados' },
     ],
     highlights: [
-      'Instituto de Victimologia (IVUJUS) fundado en 2025',
-      'Indice Legislativo con IA creado en 2025',
+      'Instituto de Victimología (IVUJUS) fundado en 2025',
+      'Índice Legislativo con IA creado en 2025',
       'Convenio Marco con 9 provincias en 2023',
-      'Curso de Victimologia con 1,300 inscriptos',
+      'Curso de Victimología con 1,300 inscriptos',
     ],
     visualization: CapacitacionViz,
     direction: 'right' as Direction,
@@ -54,17 +54,17 @@ const sections = [
     id: 'legislativo',
     title: 'Incidencia Legislativa',
     description:
-      'Promovemos leyes que protegen a las victimas y mejoran el sistema de justicia penal en toda Argentina.',
+      'Promovemos leyes que protegen a las víctimas y mejoran el sistema de justicia penal en toda Argentina.',
     stats: [
-      { label: 'Leyes Promovidas', value: '14', trend: '5 aprobadas, 2 en tramite' },
+      { label: 'Leyes Promovidas', value: '14', trend: '5 aprobadas, 2 en trámite' },
       { label: 'Amicus Curiae', value: '9', trend: '6 fallos favorables' },
       { label: 'Intervenciones OEA', value: '9', trend: 'Presencia internacional' },
     ],
     highlights: [
       '2025: Ley de Juicio en Ausencia - Caso AMIA',
-      '2024: Ley de Registro de Datos Geneticos',
+      '2024: Ley de Registro de Datos Genéticos',
       '2024: Ley de Reiterancia aprobada',
-      'Imprescriptibilidad de homicidios en nuevo Codigo Penal',
+      'Imprescriptibilidad de homicidios en nuevo Código Penal',
     ],
     visualization: LegislativoViz,
     direction: 'down' as Direction,
@@ -72,19 +72,23 @@ const sections = [
   },
   {
     id: 'comunicacion',
-    title: 'Comunicacion y Alcance',
+    title: 'Comunicación y Alcance',
     description:
-      'Generamos conciencia ciudadana sobre derechos de las victimas a traves de medios y redes sociales.',
+      'Generamos conciencia ciudadana sobre derechos de las víctimas a través de medios y redes sociales.',
     stats: [
       { label: 'Seguidores Totales', value: '43,531', trend: 'En 4 plataformas sociales' },
-      { label: 'Visualizaciones', value: '+1M', trend: 'Ultimo trimestre 2025' },
-      { label: 'Articulos Publicados', value: '85', trend: 'Opinion en medios 2021-2025' },
+      { label: 'Visualizaciones', value: '+1M', trend: 'Último trimestre 2025' },
+      { label: 'Artículos Publicados', value: '85', trend: 'Opinión en medios 2021-2025' },
+      { label: 'Intervenciones/mes', value: '5-8', trend: 'En medios nacionales' },
+      { label: 'Tiempo de aire', value: '~120', trend: 'Minutos/mes en TV y radio' },
     ],
     highlights: [
       'Facebook: 660,000 visualizaciones (+570% seguidores)',
       'Instagram: 196% crecimiento de alcance',
       '71.8% audiencia femenina comprometida',
-      'Campanas: Baja de Edad, Celulares en Carceles',
+      'Campañas: Baja de Edad, Celulares en Cárceles',
+      'Presencia en LN+ y TN (TV nacional)',
+      'Columna semanal en Radio VEO Oeste',
     ],
     visualization: ComunicacionViz,
     direction: 'left' as Direction,

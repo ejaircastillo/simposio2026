@@ -7,7 +7,7 @@ import Image from 'next/image'
 export function Footer() {
   const teamStats = [
     { label: 'Miembros Totales', value: '34' },
-    { label: 'Victimas', value: '9' },
+    { label: 'Víctimas', value: '9' },
     { label: 'Abogados', value: '18' },
     { label: 'Empleados', value: '2' },
   ]
@@ -72,7 +72,7 @@ export function Footer() {
               Equipo Usina de Justicia
             </h2>
             <p className="text-lg text-blue-100/80 max-w-2xl mx-auto text-balance">
-              Un equipo comprometido con la defensa de los derechos de las victimas y la transformacion del sistema de justicia.
+              Un equipo comprometido con la defensa de las víctimas y la transformación del sistema de justicia.
             </p>
           </motion.div>
 
@@ -184,10 +184,10 @@ export function Footer() {
 
             <div className="text-center space-y-2">
               <p className="text-sm text-blue-200/60">
-                Enero 2026 - Informe de Gestion 2021-2025
+                Enero 2026 - Informe de Gestión 2021-2025
               </p>
               <p className="text-xs text-blue-300/40">
-                Usina de Justicia. Comprometidos con la defensa de las victimas.
+                Usina de Justicia. Comprometidos con la defensa de las víctimas.
               </p>
             </div>
           </motion.div>

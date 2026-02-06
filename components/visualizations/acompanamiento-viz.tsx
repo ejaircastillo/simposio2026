@@ -20,10 +20,10 @@ export function AcompanamientoViz() {
       <div className="space-y-6">
         <div className="text-center space-y-2">
           <h3 className="text-2xl font-bold text-slate-800 font-[family-name:var(--font-display)]">
-            Evolucion de Casos
+            Evolución de Casos
           </h3>
           <p className="text-sm text-slate-500">
-            Acompanamiento 2021-2025
+            Acompañamiento 2021-2025
           </p>
         </div>
 
@@ -44,7 +44,8 @@ export function AcompanamientoViz() {
             {/* Bars */}
             <div className="relative flex justify-between gap-3 h-full">
               {data.map((item, index) => {
-                const barHeight = (item.cases / maxCases) * containerHeight
+                const calculatedHeight = (item.cases / maxCases) * containerHeight
+                const barHeight = Math.max(calculatedHeight, 50)
                 const isLast = index === data.length - 1
 
                 return (
@@ -127,7 +128,7 @@ export function AcompanamientoViz() {
         <div className="pt-4 flex items-center justify-center gap-8 text-sm">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded-md bg-gradient-to-t from-[#6b7c93] to-[#8a9db5]" />
-            <span className="text-slate-600">Casos historicos</span>
+            <span className="text-slate-600">Casos históricos</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 rounded-md bg-gradient-to-t from-[#2c4a7c] to-[#4a6491]" />

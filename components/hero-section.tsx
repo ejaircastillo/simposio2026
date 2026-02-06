@@ -12,7 +12,7 @@ export function HeroSection() {
 
   const stats = [
     { value: '14', label: 'Leyes Promovidas', sublabel: '5 Aprobadas' },
-    { value: '37', label: 'Casos Activos', sublabel: 'Acompanamiento' },
+    { value: '37', label: 'Casos Activos', sublabel: 'Acompañamiento' },
     { value: '+1M', label: 'Visualizaciones', sublabel: 'Redes Sociales' },
   ]
 
@@ -55,7 +55,7 @@ export function HeroSection() {
             className="space-y-4"
           >
             <p className="text-2xl md:text-4xl text-slate-700 font-[family-name:var(--font-display)] font-light text-balance">
-              Informe de Gestion
+              Informe de Gestión
             </p>
             <p className="text-5xl md:text-7xl font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]">
               2021-2025
