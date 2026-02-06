@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "title": "Usina de Justicia - Informe de Gestión 2021-2025",
+    "description": "Informe de gestión 2021-2025 de Usina de Justicia. Acompañamiento de víctimas, capacitación, incidencia legislativa y comunicación."
+  },
+  "hero": {
+    "title": "Informe de Gestión",
+    "period": "2021-2025",
+    "stats": {
+      "laws_promoted": { "label": "Leyes Promovidas", "sublabel": "5 Aprobadas" },
+      "active_cases": { "label": "Casos Activos", "sublabel": "Acompañamiento" },
+      "views": { "label": "Visualizaciones", "sublabel": "Redes Sociales" }
+    },
+    "explore": "Explorar"
+  },
+  "ejes": {
+    "axis": "Eje",
+    "milestones": "Hitos Destacados"
+  },
+  "acompanamiento": {
+    "title": "Acompañamiento de Víctimas",
+    "description": "Desde 2021 hemos acompañado a víctimas en su búsqueda de justicia, brindando asistencia legal y apoyo en cada etapa del proceso judicial.",
+    "stats": {
+      "cases": { "label": "Casos Acompañados", "value": "37", "trend": "Crecimiento sostenido desde 2021" },
+      "court_attendance": { "label": "Asistencia a Juicios", "value": "13", "trend": "Presencia activa en tribunales" },
+      "grateful_victims": { "label": "Víctimas Agradecidas", "value": "+20", "trend": "Testimonios recibidos en 2025" }
+    },
+    "highlights": [
+      "Caso Oroño: Primera condena obtenida en 2023",
+      "Caso Pablo Flores: Acompañamiento exitoso",
+      "Caso Acosta: Condena lograda en 2024",
+      "Base de Datos de Víctimas creada en 2025"
+    ],
+    "chart": {
+      "title": "Evolución de Casos",
+      "subtitle": "Acompañamiento 2021-2025",
+      "historical": "Casos históricos",
+      "active": "Casos activos 2025"
+    }
+  },
+  "capacitacion": {
+    "title": "Capacitación e Investigación",
+    "description": "Formamos profesionales en victimología y generamos conocimiento especializado para transformar el sistema de justicia.",
+    "stats": {
+      "people": { "label": "Personas Capacitadas", "value": "518", "trend": "Empleados judiciales en 9 provincias" },
+      "workshops": { "label": "Jornadas Realizadas", "value": "13", "trend": "Eventos académicos 2021-2025" },
+      "publications": { "label": "Publicaciones", "value": "5", "trend": "Libros y dossiers especializados" }
+    },
+    "highlights": [
+      "Instituto de Victimología (IVUJUS) fundado en 2025",
+      "Índice Legislativo con IA creado en 2025",
+      "Convenio Marco con 9 provincias en 2023",
+      "Curso de Victimología con 1,300 inscriptos"
+    ]
+  },
+  "legislativo": {
+    "title": "Incidencia Legislativa",
+    "description": "Promovemos leyes que protegen a las víctimas y mejoran el sistema de justicia penal en toda Argentina.",
+    "stats": {
+      "laws": { "label": "Leyes Promovidas", "value": "14", "trend": "5 aprobadas, 2 en trámite" },
+      "amicus": { "label": "Amicus Curiae", "value": "9", "trend": "6 fallos favorables" },
+      "oas": { "label": "Intervenciones OEA", "value": "9", "trend": "Presencia internacional" }
+    },
+    "highlights": [
+      "2025: Ley de Juicio en Ausencia - Caso AMIA",
+      "2024: Ley de Registro de Datos Genéticos",
+      "2024: Ley de Reiterancia aprobada",
+      "Imprescriptibilidad de homicidios en nuevo Código Penal"
+    ]
+  },
+  "comunicacion": {
+    "title": "Comunicación y Alcance",
+    "description": "Generamos conciencia ciudadana sobre derechos de las víctimas a través de medios y redes sociales.",
+    "stats": {
+      "followers": { "label": "Seguidores Totales", "value": "43,531", "trend": "En 4 plataformas sociales" },
+      "views": { "label": "Visualizaciones", "value": "+1M", "trend": "Último trimestre 2025" },
+      "articles": { "label": "Artículos Publicados", "value": "85", "trend": "Opinión en medios 2021-2025" },
+      "interventions": { "label": "Intervenciones/mes", "value": "5-8", "trend": "En medios nacionales" },
+      "airtime": { "label": "Tiempo de aire", "value": "~120", "trend": "Minutos/mes en TV y radio" }
+    },
+    "highlights": [
+      "Facebook: 660,000 visualizaciones (+570% seguidores)",
+      "Instagram: 196% crecimiento de alcance",
+      "71.8% audiencia femenina comprometida",
+      "Campañas: Baja de Edad, Celulares en Cárceles",
+      "Presencia en LN+ y TN (TV nacional)",
+      "Columna semanal en Radio VEO Oeste"
+    ]
+  },
+  "footer": {
+    "title": "Equipo Usina de Justicia",
+    "description": "Un equipo comprometido con la defensa de las víctimas y la transformación del sistema de justicia.",
+    "stats": {
+      "total": { "label": "Miembros Totales", "value": "34" },
+      "victims": { "label": "Víctimas", "value": "9" },
+      "lawyers": { "label": "Abogados", "value": "18" },
+      "employees": { "label": "Empleados", "value": "2" }
+    },
+    "growth": "Crecimiento del Equipo",
+    "contact": {
+      "team": "Equipo",
+      "contact": "Contacto",
+      "web": "Web Oficial"
+    },
+    "footer_text": "Enero 2026 - Informe de Gestión 2021-2025",
+    "commitment": "Usina de Justicia. Comprometidos con la defensa de las víctimas."
+  },
+  "language": {
+    "es": "Español",
+    "en": "English"
+  }
+}

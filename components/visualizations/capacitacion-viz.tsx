@@ -26,7 +26,7 @@ export function CapacitacionViz() {
     <Card className="p-8 bg-white/80 backdrop-blur-xl border-slate-200/50 shadow-2xl shadow-slate-300/20">
       <div className="space-y-6">
         <div className="text-center space-y-2">
-          <h3 className="text-2xl font-bold text-slate-800 font-[family-name:var(--font-display)]">
+          <h3 className="text-2xl font-bold text-slate-800 font-display">
             Alcance Nacional
           </h3>
           <p className="text-sm text-slate-500">
@@ -35,7 +35,7 @@ export function CapacitacionViz() {
         </div>
 
         {/* Mapa profesional con react-simple-maps */}
-        <div className="relative w-full aspect-[4/3] max-w-lg mx-auto rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-gradient-to-b from-blue-50/50 to-white">
+        <div className="relative w-full aspect-4/3 max-w-lg mx-auto rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-linear-to-b from-blue-50/50 to-white">
           <ComposableMap
             projection="geoMercator"
             projectionConfig={{
@@ -49,8 +49,8 @@ export function CapacitacionViz() {
           >
             <ZoomableGroup zoom={1}>
               <Geographies geography={geoUrl}>
-                {({ geographies }) =>
-                  geographies.map((geo) => {
+                {({ geographies }: any) =>
+                  geographies.map((geo: any) => {
                     const isArgentina = geo.properties.ISO_A3 === 'ARG'
                     return (
                       <Geography
@@ -210,7 +210,7 @@ export function CapacitacionViz() {
                 viewport={{ once: false }}
                 className="space-y-1"
               >
-                <div className="text-2xl md:text-3xl font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]">
+                <div className="text-2xl md:text-3xl font-bold text-[#2c4a7c] font-display">
                   {stat.value}
                 </div>
                 <div className="text-xs text-slate-600 font-semibold uppercase tracking-wider">

@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "title": "Usina de Justicia - Management Report 2021-2025",
+    "description": "2021-2025 Management Report of Usina de Justicia. Victim assistance, training, legislative advocacy and communication."
+  },
+  "hero": {
+    "title": "Management Report",
+    "period": "2021-2025",
+    "stats": {
+      "laws_promoted": { "label": "Laws Promoted", "sublabel": "5 Approved" },
+      "active_cases": { "label": "Active Cases", "sublabel": "Assistance" },
+      "views": { "label": "Views", "sublabel": "Social Media" }
+    },
+    "explore": "Explore"
+  },
+  "ejes": {
+    "axis": "Axis",
+    "milestones": "Key Milestones"
+  },
+  "acompanamiento": {
+    "title": "Victim Assistance",
+    "description": "Since 2021 we have accompanied victims in their pursuit of justice, providing legal assistance and support at every stage of the judicial process.",
+    "stats": {
+      "cases": { "label": "Cases Accompanied", "value": "37", "trend": "Steady growth since 2021" },
+      "court_attendance": { "label": "Court Attendance", "value": "13", "trend": "Active presence in courts" },
+      "grateful_victims": { "label": "Grateful Victims", "value": "+20", "trend": "Testimonials received in 2025" }
+    },
+    "highlights": [
+      "Oroño Case: First conviction obtained in 2023",
+      "Pablo Flores Case: Successful accompaniment",
+      "Acosta Case: Conviction achieved in 2024",
+      "Victims Database created in 2025"
+    ],
+    "chart": {
+      "title": "Case Evolution",
+      "subtitle": "Assistance 2021-2025",
+      "historical": "Historical cases",
+      "active": "Active cases 2025"
+    }
+  },
+  "capacitacion": {
+    "title": "Training and Research",
+    "description": "We train professionals in victimology and generate specialized knowledge to transform the justice system.",
+    "stats": {
+      "people": { "label": "People Trained", "value": "518", "trend": "Judicial employees in 9 provinces" },
+      "workshops": { "label": "Workshops Held", "value": "13", "trend": "Academic events 2021-2025" },
+      "publications": { "label": "Publications", "value": "5", "trend": "Books and specialized dossiers" }
+    },
+    "highlights": [
+      "Institute of Victimology (IVUJUS) founded in 2025",
+      "Legislative Index with AI created in 2025",
+      "Framework Agreement with 9 provinces in 2023",
+      "Victimology Course with 1,300 enrolled"
+    ]
+  },
+  "legislativo": {
+    "title": "Legislative Advocacy",
+    "description": "We promote laws that protect victims and improve the criminal justice system throughout Argentina.",
+    "stats": {
+      "laws": { "label": "Laws Promoted", "value": "14", "trend": "5 approved, 2 in process" },
+      "amicus": { "label": "Amicus Curiae", "value": "9", "trend": "6 favorable rulings" },
+      "oas": { "label": "OAS Interventions", "value": "9", "trend": "International presence" }
+    },
+    "highlights": [
+      "2025: Absentia Trial Law - AMIA Case",
+      "2024: Genetic Data Registry Law",
+      "2024: Recidivism Law approved",
+      "Imprescriptibility of homicides in new Criminal Code"
+    ]
+  },
+  "comunicacion": {
+    "title": "Communication and Reach",
+    "description": "We raise citizen awareness about victims' rights through media and social networks.",
+    "stats": {
+      "followers": { "label": "Total Followers", "value": "43,531", "trend": "On 4 social platforms" },
+      "views": { "label": "Views", "value": "+1M", "trend": "Last quarter 2025" },
+      "articles": { "label": "Articles Published", "value": "85", "trend": "Opinion in media 2021-2025" },
+      "interventions": { "label": "Interventions/month", "value": "5-8", "trend": "In national media" },
+      "airtime": { "label": "Airtime", "value": "~120", "trend": "Minutes/month on TV and radio" }
+    },
+    "highlights": [
+      "Facebook: 660,000 views (+570% followers)",
+      "Instagram: 196% reach growth",
+      "71.8% committed female audience",
+      "Campaigns: Age Lowering, Cell Phones in Prisons",
+      "Presence on LN+ and TN (national TV)",
+      "Weekly column on Radio VEO Oeste"
+    ]
+  },
+  "footer": {
+    "title": "Usina de Justicia Team",
+    "description": "A team committed to the defense of victims and the transformation of the justice system.",
+    "stats": {
+      "total": { "label": "Total Members", "value": "34" },
+      "victims": { "label": "Victims", "value": "9" },
+      "lawyers": { "label": "Lawyers", "value": "18" },
+      "employees": { "label": "Employees", "value": "2" }
+    },
+    "growth": "Team Growth",
+    "contact": {
+      "team": "Team",
+      "contact": "Contact",
+      "web": "Official Website"
+    },
+    "footer_text": "January 2026 - Management Report 2021-2025",
+    "commitment": "Usina de Justicia. Committed to the defense of victims."
+  },
+  "language": {
+    "es": "Español",
+    "en": "English"
+  }
+}
