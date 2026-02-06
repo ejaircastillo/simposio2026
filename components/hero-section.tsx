@@ -3,19 +3,17 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Card } from '@/components/ui/card'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 
 export function HeroSection() {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 200])
   const opacity = useTransform(scrollY, [0, 400], [1, 0])
   const scale = useTransform(scrollY, [0, 400], [1, 0.9])
-  const t = useTranslations('hero')
 
   const stats = [
-    { value: '14', label: t('stats.laws_promoted.label'), sublabel: t('stats.laws_promoted.sublabel') },
-    { value: '37', label: t('stats.active_cases.label'), sublabel: t('stats.active_cases.sublabel') },
-    { value: '+1M', label: t('stats.views.label'), sublabel: t('stats.views.sublabel') },
+    { value: '14', label: 'Leyes Promovidas', sublabel: '5 Aprobadas' },
+    { value: '37', label: 'Casos Activos', sublabel: 'Acompañamiento' },
+    { value: '+1M', label: 'Visualizaciones', sublabel: 'Redes Sociales' },
   ]
 
   return (
