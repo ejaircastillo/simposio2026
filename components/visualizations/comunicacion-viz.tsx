@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Card } from '@/components/ui/card'
-import { TrendingUp, Sparkles } from 'lucide-react'
+import { TrendingUp, Sparkles, FileText, Radio, Clock } from 'lucide-react'
 
 export function ComunicacionViz() {
   const socialStats = [
@@ -18,215 +18,313 @@ export function ComunicacionViz() {
     { label: 'Hombres', percentage: 28.2, color: 'bg-[#c5ced9]', ring: false },
   ]
 
+  const pressData = [
+    { year: '2021', articles: 8, highlight: 'Consolidación post-pandemia' },
+    { year: '2022', articles: 12, highlight: 'Aumento en diarios nacionales' },
+    { year: '2023', articles: 15, highlight: 'Lanzamiento programa universitario' },
+    { year: '2024', articles: 18, highlight: 'Pico por 10° aniversario' },
+    { year: '2025', articles: 22, highlight: 'Récord de publicaciones' },
+  ]
+
+  const mediaData = [
+    { year: '2021', interventions: 35, minutes: 450 },
+    { year: '2022', interventions: 48, minutes: 680 },
+    { year: '2023', interventions: 65, minutes: 920 },
+    { year: '2024', interventions: 82, minutes: 1200 },
+    { year: '2025', interventions: 96, minutes: 1440 },
+  ]
+
   return (
     <Card className="p-8 bg-white/80 backdrop-blur-xl border-slate-200/50 shadow-2xl shadow-slate-300/20">
       <div className="space-y-8">
         <div className="text-center space-y-2">
           <h3 className="text-2xl font-bold text-slate-800 font-[family-name:var(--font-display)]">
-            Alcance en Redes
+            Impacto Mediático
           </h3>
           <p className="text-sm text-slate-500">
-            +1M visualizaciones ultimo trimestre 2025
+            Evolución 2021-2025
           </p>
         </div>
 
-        {/* Donut Chart - Gender distribution */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewport={{ once: false, amount: 0.5 }}
-          className="relative mx-auto w-56 h-56"
-        >
-          <svg viewBox="0 0 100 100" className="transform -rotate-90 drop-shadow-lg">
-            {/* Men segment (background - smaller portion) */}
-            <circle
-              cx="50"
-              cy="50"
-              r="38"
-              fill="none"
-              stroke="#c5ced9"
-              strokeWidth="12"
-              strokeDasharray="238.76"
-              strokeDashoffset="0"
-              className="opacity-60"
-            />
+        {/* Press Evolution Chart */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <FileText className="w-4 h-4 text-[#2c4a7c]" />
+            <h4 className="text-sm font-bold text-slate-700 font-[family-name:var(--font-display)]">
+              Presencia en Prensa Escrita
+            </h4>
+          </div>
+          
+          <div className="relative pt-4 pb-10">
+            <div className="relative px-2" style={{ height: '160px' }}>
+              <div className="absolute bottom-0 left-2 right-2 h-0.5 bg-slate-300" />
+              
+              <div className="relative flex justify-between gap-2 h-full">
+                {pressData.map((item, index) => {
+                  const maxArticles = 22
+                  const barHeight = (item.articles / maxArticles) * 140
+                  const isLast = index === pressData.length - 1
 
-            {/* Women segment (main - 71.8%) */}
-            <motion.circle
-              initial={{ strokeDashoffset: 238.76 }}
-              whileInView={{ strokeDashoffset: 238.76 - (238.76 * 71.8) / 100 }}
-              transition={{ duration: 1.5, ease: 'easeOut', delay: 0.3 }}
-              viewport={{ once: false, amount: 0.5 }}
-              cx="50"
-              cy="50"
-              r="38"
-              fill="none"
-              stroke="url(#gradient-women-vibrant)"
-              strokeWidth="12"
-              strokeDasharray="238.76"
-              strokeLinecap="round"
-              filter="url(#glow)"
-            />
+                  return (
+                    <div 
+                      key={item.year} 
+                      className="relative flex-1 group cursor-pointer"
+                      style={{ height: '100%' }}
+                    >
+                      <div className="absolute bottom-0 left-0 right-0">
+                        <motion.div
+                          initial={{ height: 0 }}
+                          whileInView={{ height: barHeight }}
+                          transition={{ 
+                            duration: 0.8, 
+                            delay: index * 0.12,
+                            ease: [0.34, 1.56, 0.64, 1] 
+                          }}
+                          viewport={{ once: false, amount: 0.3 }}
+                          whileHover={{ scaleX: 1.1 }}
+                          className={`w-full rounded-t-lg relative overflow-hidden origin-bottom ${
+                            isLast
+                              ? 'bg-gradient-to-t from-[#2c4a7c] to-[#4a6491]'
+                              : 'bg-gradient-to-t from-[#6b7c93] to-[#8a9db5]'
+                          }`}
+                        >
+                          <motion.div
+                            animate={{ x: ['-100%', '100%'] }}
+                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                          />
+                          
+                          <motion.div 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 0.3, delay: index * 0.12 + 0.6 }}
+                            viewport={{ once: false }}
+                            className="absolute top-2 inset-x-0 text-center"
+                          >
+                            <span className="text-white font-bold text-xs drop-shadow-lg font-[family-name:var(--font-display)]">
+                              {item.articles}
+                            </span>
+                          </motion.div>
+                        </motion.div>
 
-            {/* Gradient and filter definitions */}
-            <defs>
-              <linearGradient id="gradient-women-vibrant" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#1e3a5f" />
-                <stop offset="50%" stopColor="#2c4a7c" />
-                <stop offset="100%" stopColor="#3b5998" />
-              </linearGradient>
-              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-          </svg>
+                        <div className="absolute -top-16 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
+                          <motion.div className="bg-slate-900 text-white px-3 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl">
+                            <div className="font-bold">{item.articles} artículos</div>
+                            <div className="text-[10px] text-slate-300">{item.highlight}</div>
+                          </motion.div>
+                          <div className="w-2 h-2 bg-slate-900 rotate-45 -mt-1 mx-auto" />
+                        </div>
+                      </div>
 
-          {/* Center content */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            viewport={{ once: false }}
-            className="absolute inset-0 flex flex-col items-center justify-center"
-          >
-            <motion.div 
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-4xl font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]"
-            >
-              71.8%
-            </motion.div>
-            <div className="text-sm text-slate-600 font-semibold">Mujeres</div>
-            <div className="text-xs text-slate-400 mt-1">Audiencia principal</div>
-          </motion.div>
-        </motion.div>
-
-        {/* Gender legend */}
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          viewport={{ once: false }}
-          className="flex items-center justify-center gap-8"
-        >
-          {genderData.map((item) => (
-            <div key={item.label} className="flex items-center gap-3">
-              <div className={`w-5 h-5 rounded-full ${item.color} ${item.ring ? 'ring-2 ring-[#2c4a7c]/30 ring-offset-2' : ''}`} />
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold text-slate-800">
-                  {item.label}
-                </span>
-                <span className="text-xs text-slate-500">
-                  {item.percentage}%
-                </span>
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: index * 0.08 }}
+                        viewport={{ once: false }}
+                        className="absolute -bottom-6 inset-x-0 text-center"
+                      >
+                        <span className="text-[10px] font-semibold text-slate-600 font-[family-name:var(--font-display)]">
+                          {item.year}
+                        </span>
+                      </motion.div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
-          ))}
-        </motion.div>
-
-        {/* Platform breakdown */}
-        <div className="space-y-4">
-          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest text-center font-[family-name:var(--font-display)]">
-            Seguidores por Plataforma
-          </h4>
-          {socialStats.map((stat, index) => {
-            const percentage = (stat.followers / totalFollowers) * 100
-
-            return (
-              <motion.div 
-                key={stat.platform} 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: false, amount: 0.5 }}
-                className="space-y-2"
-              >
-                <div className="flex items-center justify-between text-sm">
-                  <span className="font-semibold text-slate-700">
-                    {stat.platform}
-                  </span>
-                  <span className="text-slate-600 font-mono text-xs">
-                    {stat.followers.toLocaleString()}
-                  </span>
-                </div>
-                <div className="h-3 bg-slate-200 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${percentage}%` }}
-                    transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: [0.34, 1.56, 0.64, 1] }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    className={`h-full bg-gradient-to-r ${stat.color} rounded-full relative overflow-hidden`}
-                  >
-                    {/* Shimmer effect */}
-                    <motion.div
-                      animate={{ x: ['-100%', '100%'] }}
-                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 1.5 }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
-                    />
-                  </motion.div>
-                </div>
-              </motion.div>
-            )
-          })}
+          </div>
         </div>
 
-        {/* Instagram growth highlight */}
-        <motion.div
-          initial={{ opacity: 0, y: 20, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          viewport={{ once: false, amount: 0.5 }}
-          whileHover={{ scale: 1.02 }}
-          className="p-4 rounded-xl bg-gradient-to-r from-[#2c4a7c]/10 to-[#4a6491]/10 border border-[#2c4a7c]/20"
-        >
-          <div className="flex items-center gap-4">
-            <motion.div 
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="p-3 rounded-xl bg-[#2c4a7c]"
-            >
-              <TrendingUp className="w-5 h-5 text-white" />
-            </motion.div>
-            <div className="flex-1">
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]">
-                  +196%
-                </span>
-                <Sparkles className="w-4 h-4 text-[#4a6491]" />
-              </div>
-              <div className="text-xs text-slate-600">
-                Crecimiento Instagram ultimo trimestre
+        {/* Radio/TV Evolution Chart */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2">
+            <Radio className="w-4 h-4 text-[#2c4a7c]" />
+            <h4 className="text-sm font-bold text-slate-700 font-[family-name:var(--font-display)]">
+              Presencia en Radio y TV
+            </h4>
+          </div>
+          
+          <div className="relative pt-4 pb-10">
+            <div className="relative px-2" style={{ height: '160px' }}>
+              <div className="absolute bottom-0 left-2 right-2 h-0.5 bg-slate-300" />
+              
+              <div className="relative flex justify-between gap-2 h-full">
+                {mediaData.map((item, index) => {
+                  const maxInterventions = 96
+                  const barHeight = (item.interventions / maxInterventions) * 140
+                  const isLast = index === mediaData.length - 1
+
+                  return (
+                    <div 
+                      key={item.year} 
+                      className="relative flex-1 group cursor-pointer"
+                      style={{ height: '100%' }}
+                    >
+                      <div className="absolute bottom-0 left-0 right-0">
+                        <motion.div
+                          initial={{ height: 0 }}
+                          whileInView={{ height: barHeight }}
+                          transition={{ 
+                            duration: 0.8, 
+                            delay: index * 0.12,
+                            ease: [0.34, 1.56, 0.64, 1] 
+                          }}
+                          viewport={{ once: false, amount: 0.3 }}
+                          whileHover={{ scaleX: 1.1 }}
+                          className={`w-full rounded-t-lg relative overflow-hidden origin-bottom ${
+                            isLast
+                              ? 'bg-gradient-to-t from-[#2c4a7c] to-[#4a6491]'
+                              : 'bg-gradient-to-t from-[#6b7c93] to-[#8a9db5]'
+                          }`}
+                        >
+                          <motion.div
+                            animate={{ x: ['-100%', '100%'] }}
+                            transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                          />
+                          
+                          <motion.div 
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ duration: 0.3, delay: index * 0.12 + 0.6 }}
+                            viewport={{ once: false }}
+                            className="absolute top-2 inset-x-0 text-center"
+                          >
+                            <span className="text-white font-bold text-xs drop-shadow-lg font-[family-name:var(--font-display)]">
+                              {item.interventions}
+                            </span>
+                          </motion.div>
+                        </motion.div>
+
+                        <div className="absolute -top-16 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
+                          <motion.div className="bg-slate-900 text-white px-3 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl">
+                            <div className="font-bold">{item.interventions} intervenciones</div>
+                            <div className="text-[10px] text-slate-300">{item.minutes} minutos de aire</div>
+                          </motion.div>
+                          <div className="w-2 h-2 bg-slate-900 rotate-45 -mt-1 mx-auto" />
+                        </div>
+                      </div>
+
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: index * 0.08 }}
+                        viewport={{ once: false }}
+                        className="absolute -bottom-6 inset-x-0 text-center"
+                      >
+                        <span className="text-[10px] font-semibold text-slate-600 font-[family-name:var(--font-display)]">
+                          {item.year}
+                        </span>
+                      </motion.div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Total followers */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          viewport={{ once: false }}
-          className="text-center pt-4 border-t border-slate-200"
-        >
-          <motion.div 
-            initial={{ scale: 0.8 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.5, type: 'spring' }}
-            viewport={{ once: false }}
-            className="text-4xl font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]"
-          >
-            {totalFollowers.toLocaleString()}
-          </motion.div>
-          <div className="text-sm text-slate-600 font-semibold mt-1">
-            Seguidores Totales
+        {/* Summary Stats */}
+        <div className="pt-4 space-y-3">
+          <div className="grid grid-cols-2 gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              viewport={{ once: false }}
+              className="bg-slate-50 rounded-xl p-3 border border-slate-200"
+            >
+              <div className="text-2xl font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]">
+                75
+              </div>
+              <div className="text-xs text-slate-600 font-semibold">Artículos Totales</div>
+              <div className="text-[10px] text-slate-500">Prensa escrita 2021-2025</div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+              viewport={{ once: false }}
+              className="bg-slate-50 rounded-xl p-3 border border-slate-200"
+            >
+              <div className="flex items-center gap-1">
+                <Clock className="w-3 h-3 text-[#2c4a7c]" />
+                <span className="text-2xl font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]">
+                  4.690
+                </span>
+              </div>
+              <div className="text-xs text-slate-600 font-semibold">Minutos Totales</div>
+              <div className="text-[10px] text-slate-500">Radio y TV 2021-2025</div>
+            </motion.div>
           </div>
-        </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.5 }}
+            viewport={{ once: false }}
+            className="bg-gradient-to-r from-[#2c4a7c]/10 to-[#4a6491]/10 rounded-xl p-3 border border-[#2c4a7c]/20"
+          >
+            <div className="flex items-center gap-3">
+              <motion.div 
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="p-2 rounded-lg bg-[#2c4a7c]"
+              >
+                <TrendingUp className="w-4 h-4 text-white" />
+              </motion.div>
+              <div className="flex-1">
+                <div className="flex items-center gap-1">
+                  <span className="text-lg font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]">
+                    +274%
+                  </span>
+                  <Sparkles className="w-3 h-3 text-[#4a6491]" />
+                </div>
+                <div className="text-[10px] text-slate-600">
+                  Crecimiento en intervenciones 2021-2025
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Social Media Summary */}
+        <div className="pt-4 border-t border-slate-200">
+          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest text-center font-[family-name:var(--font-display)] mb-3">
+            Alcance Digital
+          </h4>
+          <div className="grid grid-cols-4 gap-2 text-center">
+            {socialStats.map((stat, index) => (
+              <motion.div
+                key={stat.platform}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.6 + index * 0.08 }}
+                viewport={{ once: false }}
+                className="bg-slate-50 rounded-lg p-2 border border-slate-100"
+              >
+                <div className="text-xs font-semibold text-[#2c4a7c] font-[family-name:var(--font-display)]">
+                  {(stat.followers / 1000).toFixed(1)}K
+                </div>
+                <div className="text-[9px] text-slate-600 truncate">
+                  {stat.platform.split(' ')[0]}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            viewport={{ once: false }}
+            className="text-center pt-3"
+          >
+            <span className="text-sm font-bold text-[#2c4a7c] font-[family-name:var(--font-display)]">
+              {totalFollowers.toLocaleString()}
+            </span>
+            <span className="text-xs text-slate-600 ml-1">seguidores totales</span>
+          </motion.div>
+        </div>
       </div>
     </Card>
   )
