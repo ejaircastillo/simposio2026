@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Users, Mail, ExternalLink } from 'lucide-react'
+import { Mail, ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 
 export function Footer() {
@@ -165,21 +165,24 @@ export function Footer() {
             className="flex flex-col items-center gap-8 pt-8 border-t border-white/10"
           >
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-              {[
-                { icon: Users, label: 'Equipo', href: '#' },
-                { icon: Mail, label: 'Contacto', href: '#' },
-                { icon: ExternalLink, label: 'Web Oficial', href: '#' },
-              ].map((link) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  className="flex items-center gap-2 text-blue-200/80 hover:text-white transition-colors duration-200"
-                >
-                  <link.icon className="w-4 h-4" />
-                  <span className="font-medium">{link.label}</span>
-                </motion.a>
-              ))}
+              <motion.a
+                href="mailto:info@usinadejusticia.org.ar"
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="flex items-center gap-2 text-blue-200/80 hover:text-white transition-colors duration-200"
+              >
+                <Mail className="w-4 h-4" />
+                <span className="font-medium">Contacto</span>
+              </motion.a>
+              <motion.a
+                href="https://usinadejusticia.org.ar"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="flex items-center gap-2 text-blue-200/80 hover:text-white transition-colors duration-200"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span className="font-medium">Web Oficial</span>
+              </motion.a>
             </div>
 
             <div className="text-center space-y-2">

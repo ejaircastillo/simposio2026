@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, type ComponentType } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { AcompanamientoViz } from './visualizations/acompanamiento-viz'
 import { CapacitacionViz } from './visualizations/capacitacion-viz'
@@ -9,7 +9,19 @@ import { ComunicacionViz } from './visualizations/comunicacion-viz'
 
 type Direction = 'down' | 'right' | 'left'
 
-const sections = [
+type Section = {
+  id: string
+  title: string
+  description: string
+  stats: Array<{ label: string; value: string; trend: string }>
+  highlights: string[]
+  footerNote?: string
+  visualization: ComponentType
+  direction: Direction
+  bgColor: string
+}
+
+const sections: Section[] = [
   {
     id: 'acompanamiento',
     title: 'Acompañamiento de Víctimas',
@@ -90,6 +102,7 @@ const sections = [
       'Presencia en LN+ y TN (TV nacional)',
       'Columna semanal en Radio VEO Oeste',
     ],
+    footerNote: 'Los datos presentados surgen del cruce del Registro de Actividad Institucional 2021-2025 y el Monitoreo de Medios realizado por el equipo técnico de la asociación. La evolución anual se estima en base a la indexación de artículos en prensa escrita nacional y la frecuencia de columnas fijas en medios radiales y de streaming.',
     visualization: ComunicacionViz,
     direction: 'left' as Direction,
     bgColor: 'from-slate-50/30 to-transparent',
@@ -240,6 +253,20 @@ function ScrollySection({
                 ))}
               </ul>
             </motion.div>
+
+            {section.footerNote && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                viewport={{ once: false, amount: 0.3 }}
+                className="pt-6 mt-6 border-t border-slate-200/50"
+              >
+                <p className="text-xs text-slate-500 italic leading-relaxed">
+                  {section.footerNote}
+                </p>
+              </motion.div>
+            )}
           </div>
 
           {/* Visualization */}

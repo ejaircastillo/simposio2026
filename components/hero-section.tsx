@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Card } from '@/components/ui/card'
+import { Download } from 'lucide-react'
 import Image from 'next/image'
 
 export function HeroSection() {
@@ -97,6 +98,25 @@ export function HeroSection() {
                 </Card>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Download Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="pt-8"
+          >
+            <motion.a
+              href="/Informe Usina de Justicia 2021-2025.pdf"
+              download
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#2c4a7c] hover:bg-[#1e3a5f] text-white rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <Download className="w-5 h-5" />
+              <span>Descargar Informe Completo</span>
+            </motion.a>
           </motion.div>
 
           {/* Scroll indicator */}
