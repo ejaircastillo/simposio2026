@@ -23,13 +23,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Usina de Justicia - Informe de Gestión 2021-2025',
-  description: 'Informe de gestión 2021-2025 de Usina de Justicia. Acompañamiento de víctimas, capacitación, incidencia legislativa y comunicación.',
+  title: 'Simposio 2026',
+  description: 'Simposio 2026 - Landing page',
   generator: 'v0.app',
-  icons: {
-    icon: '/favicon_usina.png',
-    apple: '/favicon_usina.png',
-  },
 }
 
 export default function RootLayout({
