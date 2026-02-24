@@ -11,20 +11,72 @@ export function RegistrationSection() {
     email: '',
     phone: '',
     profession: '',
+    institution: '',
+    isLawyer: false,
+    jurisdiction: '',
+    otherJurisdiction: '',
+    licenseNumber: '',
     wantCertificate: false,
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setTimeout(() => {
-      setIsSubmitting(false)
+
+    const payload = {
+      nombre: formData.name,
+      dni: formData.dni,
+      email: formData.email,
+      telefono: formData.phone,
+      profesion: formData.profession || null,
+      institucion: formData.institution || null,
+      esAbogado: formData.isLawyer,
+      jurisdiccionMatricula: formData.isLawyer ? formData.jurisdiction : null,
+      otraJurisdiccion: formData.isLawyer && formData.jurisdiction === 'other' ? formData.otherJurisdiction : null,
+      numeroMatricula: formData.isLawyer ? formData.licenseNumber : null,
+    }
+
+    console.log('Enviando datos:', payload)
+
+    try {
+      const response = await fetch('/api/inscribir', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al inscribirse')
+      }
+
       alert('Formulario enviado correctamente')
-    }, 2000)
+      setFormData({
+        name: '',
+        dni: '',
+        email: '',
+        phone: '',
+        profession: '',
+        institution: '',
+        isLawyer: false,
+        jurisdiction: '',
+        otherJurisdiction: '',
+        licenseNumber: '',
+        wantCertificate: false,
+      })
+    } catch (err) {
+      console.error('Error:', err)
+      alert(err instanceof Error ? err.message : 'Error al inscribirse')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
-    <section className="py-24 px-4">
+    <section id="registration" className="py-24 px-4">
       <div className="container mx-auto max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -111,19 +163,126 @@ export function RegistrationSection() {
               />
             </div>
 
-            <div className="space-y-2">
-              <label htmlFor="profession" className="text-sm font-medium text-foreground">
-                Profesión / Institución (Opcional)
-              </label>
-              <input
-                type="text"
-                id="profession"
-                value={formData.profession}
-                onChange={(e) => setFormData({ ...formData, profession: e.target.value })}
-                className="w-full px-4 py-3 bg-background/50 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground placeholder:text-muted-foreground"
-                placeholder="Abogado - Colegio Público de Abogados"
-              />
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="profession" className="text-sm font-medium text-foreground">
+                  Profesión (Opcional)
+                </label>
+                <input
+                  type="text"
+                  id="profession"
+                  value={formData.profession}
+                  onChange={(e) => setFormData({ ...formData, profession: e.target.value })}
+                  className="w-full px-4 py-3 bg-background/50 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground placeholder:text-muted-foreground"
+                  placeholder="Abogado"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="institution" className="text-sm font-medium text-foreground">
+                  Institución (Opcional)
+                </label>
+                <input
+                  type="text"
+                  id="institution"
+                  value={formData.institution}
+                  onChange={(e) => setFormData({ ...formData, institution: e.target.value })}
+                  className="w-full px-4 py-3 bg-background/50 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground placeholder:text-muted-foreground"
+                  placeholder="Colegio Público de Abogados"
+                />
+              </div>
             </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">
+                ¿Es abogado? (Opcional)
+              </label>
+              <div className="flex gap-6">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="isLawyer"
+                    checked={formData.isLawyer === true}
+                    onChange={() => setFormData({ ...formData, isLawyer: true })}
+                    className="w-4 h-4 accent-primary"
+                  />
+                  <span className="text-sm text-foreground">Sí</span>
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="isLawyer"
+                    checked={formData.isLawyer === false}
+                    onChange={() => setFormData({ ...formData, isLawyer: false })}
+                    className="w-4 h-4 accent-primary"
+                  />
+                  <span className="text-sm text-foreground">No</span>
+                </label>
+              </div>
+            </div>
+
+            {formData.isLawyer && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="space-y-6"
+              >
+                <div className="space-y-2">
+                  <label htmlFor="jurisdiction" className="text-sm font-medium text-foreground">
+                    Jurisdicción de la Matrícula *
+                  </label>
+                  <select
+                    id="jurisdiction"
+                    required
+                    value={formData.jurisdiction}
+                    onChange={(e) => setFormData({ ...formData, jurisdiction: e.target.value, otherJurisdiction: '' })}
+                    className="w-full px-4 py-3 bg-background/50 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground"
+                  >
+                    <option value="">Seleccione jurisdicción</option>
+                    <option value="CPACF">CPACF (Capital Federal)</option>
+                    <option value="other">Otra jurisdicción</option>
+                  </select>
+                </div>
+
+                {formData.jurisdiction === 'other' && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="space-y-2"
+                  >
+                    <label htmlFor="otherJurisdiction" className="text-sm font-medium text-foreground">
+                      ¿Cuál jurisdicción? *
+                    </label>
+                    <input
+                      type="text"
+                      id="otherJurisdiction"
+                      required
+                      value={formData.otherJurisdiction}
+                      onChange={(e) => setFormData({ ...formData, otherJurisdiction: e.target.value })}
+                      className="w-full px-4 py-3 bg-background/50 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground placeholder:text-muted-foreground"
+                      placeholder="Ej: Provincia de Buenos Aires"
+                    />
+                  </motion.div>
+                )}
+
+                <div className="space-y-2">
+                  <label htmlFor="licenseNumber" className="text-sm font-medium text-foreground">
+                    Número de Matrícula *
+                  </label>
+                  <input
+                    type="text"
+                    id="licenseNumber"
+                    required
+                    value={formData.licenseNumber}
+                    onChange={(e) => setFormData({ ...formData, licenseNumber: e.target.value })}
+                    className="w-full px-4 py-3 bg-background/50 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground placeholder:text-muted-foreground"
+                    placeholder="123456"
+                  />
+                </div>
+              </motion.div>
+            )}
 
             <div className="flex items-start gap-3">
               <input

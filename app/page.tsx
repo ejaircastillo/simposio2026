@@ -6,13 +6,15 @@ import { ScheduleSection } from '@/components/schedule-section'
 import { EndorsementsSection } from '@/components/endorsements-section'
 import { VenueSection } from '@/components/venue-section'
 import { RegistrationSection } from '@/components/registration-section'
+import { Navbar } from '@/components/navbar'
 import { motion } from 'framer-motion'
 
 export default function Page() {
   return (
     <>
       <LavaBackground />
-      <main>
+      <Navbar />
+      <main className="pt-20">
         <section className="min-h-screen relative flex items-center justify-center">
           <div className="container mx-auto px-4 text-center space-y-8">
             <motion.h1

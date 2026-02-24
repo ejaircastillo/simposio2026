@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { DM_Sans, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { FloatingRegistrationButton } from '@/components/floating-registration-button'
 import './globals.css'
 
 const dmSans = DM_Sans({ 
@@ -37,6 +38,7 @@ export default function RootLayout({
     <html lang="es" className={`${dmSans.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased">
         {children}
+        <FloatingRegistrationButton />
         <Analytics />
       </body>
     </html>

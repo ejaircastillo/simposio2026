@@ -51,32 +51,56 @@ export function SpeakersSection() {
             viewport={{ once: false, amount: 0.3 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {mainSpeakers.map((speaker) => (
-              <motion.div
-                key={speaker.id}
-                variants={item}
-                onClick={() => setSelectedSpeakerId(speaker.id)}
-                className="cursor-pointer group"
-              >
-                 <div className="relative aspect-[3/4] overflow-hidden">
-                   <Image
-                     src={`https://i.pravatar.cc/300?u=${speaker.id}`}
-                     alt={speaker.name}
-                     fill
-                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                   />
-                   <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-background via-background/80 to-transparent" />
-                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                     <h3 className="text-xl md:text-2xl font-bold text-foreground font-[family-name:var(--font-display)] mb-2">
-                       {speaker.name}
-                     </h3>
-                     <p className="text-sm text-muted-foreground line-clamp-1">
-                       {speaker.title}
-                     </p>
-                   </div>
-                 </div>
-              </motion.div>
-            ))}
+             {mainSpeakers.map((speaker) => (
+                <motion.div
+                  key={speaker.id}
+                  variants={item}
+                  onClick={() => setSelectedSpeakerId(speaker.id)}
+                  className="cursor-pointer group"
+                >
+                    {speaker.image ? (
+                      <div className="relative aspect-[3/4] overflow-hidden">
+                         <Image
+                           src={speaker.image}
+                           alt={speaker.name}
+                           fill
+                           className="transition-transform duration-500 group-hover:scale-105"
+                           style={{
+                             objectFit: (speaker.imageScale === 'object-cover' || !speaker.imageScale) 
+                               ? 'cover' as const
+                               : speaker.imageScale === 'object-contain'
+                               ? 'contain' as const
+                               : 'cover' as const,
+                             objectPosition: speaker.objectPosition === 'object-top' 
+                               ? 'top center' 
+                               : speaker.objectPosition === 'object-center' || !speaker.objectPosition
+                               ? 'center'
+                               : speaker.objectPosition,
+                             backgroundColor: '#f8fafc'
+                           }}
+                         />
+                         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-background via-background/80 to-transparent" />
+                         <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                           <h3 className="text-xl md:text-2xl font-bold text-foreground font-[family-name:var(--font-display)] mb-2">
+                             {speaker.name}
+                           </h3>
+                           <p className="text-sm text-muted-foreground line-clamp-1">
+                             {speaker.title}
+                           </p>
+                         </div>
+                       </div>
+                    ) : (
+                      <div className="p-6 space-y-2">
+                        <h3 className="text-xl md:text-2xl font-bold text-foreground font-[family-name:var(--font-display)] mb-2">
+                          {speaker.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground line-clamp-1">
+                          {speaker.title}
+                        </p>
+                      </div>
+                    )}
+                </motion.div>
+             ))}
           </motion.div>
 
           <motion.div
