@@ -19,6 +19,7 @@ model Inscrito {
   nombre                String
   email                 String   @unique
   attended              Boolean  @default(false)
+  mail_sent             Boolean  @default(false)
   hash                  String   @unique
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt

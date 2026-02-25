@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { generarHash } from '@/lib/certificado'
+import { sendConfirmationEmail } from '@/lib/send-email'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { nombre, dni, email, telefono, profesion, institucion, esAbogado, jurisdiccionMatricula, otraJurisdiccion, numeroMatricula } = body
-
-    console.log('Datos recibidos:', body)
 
     if (!nombre || !dni || !email || !telefono) {
       return NextResponse.json({ error: 'Nombre, DNI, email y teléfono son requeridos' }, { status: 400 })
@@ -48,15 +47,33 @@ export async function POST(request: NextRequest) {
       },
     })
 
-    return NextResponse.json({ 
+    const emailResult = await sendConfirmationEmail({
+      nombre,
+      email,
+      dni,
+      esAbogado: esAbogado || false,
+      jurisdiccionMatricula: jurisdiccionMatricula || null,
+      otraJurisdiccion: otraJurisdiccion || null,
+      numeroMatricula: numeroMatricula || null,
+    })
+
+    if (emailResult.success) {
+      // Fire-and-forget: no debe bloquear ni romper la respuesta si falla
+      prisma.inscrito.update({
+        where: { id: inscrito.id },
+        data: { mail_sent: true },
+      }).catch(() => {})
+    }
+
+    return NextResponse.json({
       mensaje: 'Inscripción exitosa',
+      emailEnviado: emailResult.success,
       inscrito: {
         id: inscrito.id,
         nombre: inscrito.nombre,
       },
-    }, { status: 201 })
-  } catch (error) {
-    console.error('Error en inscripción:', error)
+    }, { status: 200 })
+  } catch {
     return NextResponse.json({ error: 'Error en inscripción' }, { status: 500 })
   }
 }

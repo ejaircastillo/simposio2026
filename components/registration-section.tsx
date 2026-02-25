@@ -1,10 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 export function RegistrationSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     dni: '',
@@ -22,6 +24,7 @@ export function RegistrationSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitError('')
 
     const payload = {
       nombre: formData.name,
@@ -36,40 +39,23 @@ export function RegistrationSection() {
       numeroMatricula: formData.isLawyer ? formData.licenseNumber : null,
     }
 
-    console.log('Enviando datos:', payload)
-
     try {
       const response = await fetch('/api/inscribir', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       })
 
       const data = await response.json()
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Error al inscribirse')
+      if (response.status === 200) {
+        setSubmitted(true)
+        return
       }
 
-      alert('Formulario enviado correctamente')
-      setFormData({
-        name: '',
-        dni: '',
-        email: '',
-        phone: '',
-        profession: '',
-        institution: '',
-        isLawyer: false,
-        jurisdiction: '',
-        otherJurisdiction: '',
-        licenseNumber: '',
-        wantCertificate: false,
-      })
-    } catch (err) {
-      console.error('Error:', err)
-      alert(err instanceof Error ? err.message : 'Error al inscribirse')
+      setSubmitError(data.error || 'Error al inscribirse')
+    } catch {
+      setSubmitError('No se pudo conectar con el servidor. Intentá de nuevo.')
     } finally {
       setIsSubmitting(false)
     }
@@ -100,6 +86,21 @@ export function RegistrationSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-background/60 backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl p-8 md:p-12"
         >
+          {submitted ? (
+            <div className="text-center py-8 space-y-4">
+              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto">
+                <svg className="w-8 h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-foreground font-[family-name:var(--font-display)]">
+                ¡Inscripción confirmada!
+              </h3>
+              <p className="text-muted-foreground max-w-sm mx-auto">
+                Te enviamos un email de confirmación. Revisá tu bandeja de entrada (y la carpeta de spam).
+              </p>
+            </div>
+          ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label htmlFor="name" className="text-sm font-medium text-foreground">
@@ -338,7 +339,12 @@ export function RegistrationSection() {
             >
               {isSubmitting ? 'Enviando...' : 'Inscribirse'}
             </button>
+
+            {submitError && (
+              <p className="text-sm text-red-500 text-center">{submitError}</p>
+            )}
           </form>
+          )}
         </motion.div>
       </div>
     </section>

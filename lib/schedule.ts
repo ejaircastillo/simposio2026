@@ -28,7 +28,7 @@ export const schedule = [
       {
         time: "16:35",
         title: "Panel III: Una mirada científica del derecho y de la victimología",
-        speakers: ["Daniel Roggero", "Noelia Juarez"],
+        speakers: ["Daniel Roggero", "Noelia Marelyn Juarez"],
         moderator: "Mariana Romano",
         type: "panel"
       },

@@ -49,70 +49,43 @@ export function SpeakersSection() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="flex flex-wrap items-start gap-6 justify-center"
           >
-             {mainSpeakers.map((speaker) => (
-                <motion.div
-                  key={speaker.id}
-                  variants={item}
-                  onClick={() => setSelectedSpeakerId(speaker.id)}
-                  className="cursor-pointer group"
-                >
-                    {speaker.image ? (
-                      <div className="relative aspect-[3/4] overflow-hidden">
-                         <Image
-                           src={speaker.image}
-                           alt={speaker.name}
-                           fill
-                           className="transition-transform duration-500 group-hover:scale-105"
-                           style={{
-                             objectFit: (speaker.imageScale === 'object-cover' || !speaker.imageScale) 
-                               ? 'cover' as const
-                               : speaker.imageScale === 'object-contain'
-                               ? 'contain' as const
-                               : 'cover' as const,
-                             objectPosition: speaker.objectPosition === 'object-top' 
-                               ? 'top center' 
-                               : speaker.objectPosition === 'object-center' || !speaker.objectPosition
-                               ? 'center'
-                               : speaker.objectPosition,
-                             backgroundColor: '#f8fafc'
-                           }}
-                         />
-                         <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-background via-background/80 to-transparent" />
-                         <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                           <h3 className="text-xl md:text-2xl font-bold text-foreground font-[family-name:var(--font-display)] mb-2">
-                             {speaker.name}
-                           </h3>
-                           <p className="text-sm text-muted-foreground line-clamp-1">
-                             {speaker.title}
-                           </p>
-                         </div>
-                       </div>
-                    ) : (
-                      <div className="p-6 space-y-2">
-                        <h3 className="text-xl md:text-2xl font-bold text-foreground font-[family-name:var(--font-display)] mb-2">
-                          {speaker.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground line-clamp-1">
-                          {speaker.title}
-                        </p>
-                      </div>
-                    )}
-                </motion.div>
-             ))}
-          </motion.div>
+            {mainSpeakers.map((speaker) => (
+              <motion.div
+                key={speaker.id}
+                variants={item}
+                onClick={() => setSelectedSpeakerId(speaker.id)}
+                className="flex flex-col bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer group w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-0.75rem)] max-w-[280px]"
+              >
+                <div className="h-72 w-full flex-shrink-0 relative overflow-hidden">
+                  {speaker.image ? (
+                    <Image
+                      src={speaker.image}
+                      alt={speaker.name}
+                      fill
+                      className="transition-transform duration-500 group-hover:scale-105"
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: speaker.objectPosition || 'center',
+                        backgroundColor: '#f8fafc'
+                      }}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200" />
+                  )}
+                </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mt-12"
-          >
-            <p className="text-muted-foreground">
-              <span className="text-primary font-medium">Explora todos los oradores</span> en el programa del simposio
-            </p>
+                <div className="p-4 w-full bg-white border-t border-gray-100">
+                  <h3 className="text-lg font-bold text-foreground font-[family-name:var(--font-display)] mb-1">
+                    {speaker.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {speaker.title}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
