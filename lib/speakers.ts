@@ -77,7 +77,7 @@ export const speakers: Speaker[] = [
     id: "dario-solis",
     name: "Darío Solís",
     title: "Defensor de Víctimas (Panamá)",
-    bio: "Defensor Público de Víctimas. Miembro del Comité Científico del Instituto de Victimología de Usina de Justicia (IVUJUS). Especializado en criminalística, derecho y ciencias políticas, derecho procesal penal, sistema penal acusatorio, victimolgía y derechos humanos. Profesor y conferencista. Participó activamente en iniciativas académicas y colaboraciones con instituciones reconocidas como el Instituto Vasco de Criminología, la Sociedad Vasca de Victimología, la Sociedad Mundial de Victimología, Expertise France, Euro Social +, entre otras.",
+    bio: "Defensor de víctimas. Miembro del Comité Científico del Instituto de Victimología de Usina de Justicia (IVUJUS). Conferencista internacional. Posee una amplia experiencia en litigación y asesoría empresarial e institucional. Es miembro de la Sociedad Vasca de Victimología y tiene certificación habilitante de la Escuela Judicial de Panamá para Operadores del Sistema Penal Acusatorio. Doctor cum laude en derechos humanos, poderes públicos y Unión Europea (Universidad del País Vasco)",
     image: "/Oradores/Dario Solis.webp",
     objectPosition: "top center",
     highlight: true
@@ -114,7 +114,7 @@ export const speakers: Speaker[] = [
     name: "Gustavo Topic",
     title: "Moderador",
     bio: "Secretario del Programa de Víctimas de Delitos dependiente de la Secretaria General del Colegio Público de la Abogacía de la Capital Federal (CPACF). Secretario de la comisión de Defensa del Colegio Público de Abogados CABA. Relator designado por el CPACF por ante la Inspección General de Justicia dependiente del Ministerio de Justicia de la Nación. Miembro Fundador del Observatorio de Víctimas de Falsas Denuncias de Delitos contra la integridad Sexual.",
-    image: null,
+    image: "/Oradores/topic.webp",
     highlight: false
   },
   {
