@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { Prisma } from '@prisma/client'
 import { prisma } from '@/lib/prisma'
 import { generarHash } from '@/lib/certificado'
 import { sendConfirmationEmail } from '@/lib/send-email'
@@ -23,10 +24,10 @@ export async function POST(request: NextRequest) {
 
     if (existingInscrito) {
       if (existingInscrito.dni === dni) {
-        return NextResponse.json({ error: 'Ya existe un inscrito con este DNI' }, { status: 400 })
+        return NextResponse.json({ error: 'Este DNI ya está registrado' }, { status: 409 })
       }
       if (existingInscrito.email === email) {
-        return NextResponse.json({ error: 'Ya existe un inscrito con este email' }, { status: 400 })
+        return NextResponse.json({ error: 'Este email ya está registrado' }, { status: 409 })
       }
     }
 
@@ -73,7 +74,17 @@ export async function POST(request: NextRequest) {
         nombre: inscrito.nombre,
       },
     }, { status: 200 })
-  } catch {
+  } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2002') {
+      const fields = error.meta?.target as string[] | undefined
+      if (fields?.includes('dni')) {
+        return NextResponse.json({ error: 'Este DNI ya está registrado' }, { status: 409 })
+      }
+      if (fields?.includes('email')) {
+        return NextResponse.json({ error: 'Este email ya está registrado' }, { status: 409 })
+      }
+      return NextResponse.json({ error: 'Ya existe un registro con estos datos' }, { status: 409 })
+    }
     return NextResponse.json({ error: 'Error en inscripción' }, { status: 500 })
   }
 }

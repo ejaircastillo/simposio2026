@@ -30,3 +30,12 @@ model Inscrito {
   otraJurisdiccion      String?
   numeroMatricula       String?
 }
+
+model AuditLog {
+  id             String   @id @default(uuid())
+  accion         String
+  inscritoId     String
+  inscritoNombre String
+  detalle        String?
+  createdAt      DateTime @default(now())
+}

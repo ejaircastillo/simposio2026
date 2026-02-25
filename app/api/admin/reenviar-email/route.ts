@@ -32,6 +32,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: result.error ?? 'Error desconocido' }, { status: 500 })
     }
 
+    await prisma.auditLog.create({
+      data: {
+        accion: 'REENVIAR_EMAIL',
+        inscritoId: inscrito.id,
+        inscritoNombre: inscrito.nombre,
+        detalle: `Email reenviado a ${inscrito.email}`,
+      },
+    })
+
     return NextResponse.json({ success: true })
   } catch {
     return NextResponse.json({ error: 'Error al reenviar el email' }, { status: 500 })
