@@ -35,7 +35,7 @@ export const schedule = [
       {
         time: "17:15",
         title: "Panel IV: Trabajo de campo y Ley de Datos Genéticos",
-        speakers: ["Karina Massa", "Raquel Slotolow", "Guillermo Bargna"],
+        speakers: ["Raquel Slotolow", "Guillermo Bargna"],
         moderator: "Mariana Romano",
         description: "Testimonios de familiares y análisis de la Ley 27.759.",
         type: "panel"

@@ -143,14 +143,6 @@ export const speakers: Speaker[] = [
     highlight: false
   },
   {
-    id: "karina-massa",
-    name: "Karina Massa",
-    title: "Panelista",
-    bio: "Directora de Asistencia a Víctimas del Municipio de Tres de Febrero. Diplomada en Gestión de la Conflictividad y Promoción de la Seguridad Ciudadana (Juan Vucetich. 2024). Madre de Matías Gandolfo, asesinado en el año 2014.",
-    image: "/Oradores/massa.webp",
-    highlight: false
-  },
-  {
     id: "raquel-slotolow",
     name: "Raquel Slotolow",
     title: "Panelista",
