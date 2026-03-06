@@ -51,36 +51,6 @@ export function ScheduleSection() {
     return <>{parts.length > 0 ? parts : <span>{text}</span>}</>
   }
 
-  const getBadgeVariant = (type: string) => {
-    switch (type) {
-      case 'highlight':
-        return 'default'
-      case 'main':
-        return 'secondary'
-      case 'ceremony':
-        return 'outline'
-      default:
-        return 'outline'
-    }
-  }
-
-  const getTypeLabel = (type: string) => {
-    switch (type) {
-      case 'highlight':
-        return 'Ponencia Central'
-      case 'main':
-        return 'Apertura'
-      case 'panel':
-        return 'Panel'
-      case 'ceremony':
-        return 'Ceremonia'
-      case 'logistics':
-        return 'Logística'
-      default:
-        return ''
-    }
-  }
-
   return (
     <section className="py-24 px-4 bg-muted/30">
       <div className="container mx-auto max-w-5xl">
@@ -147,11 +117,6 @@ export function ScheduleSection() {
                               <h3 className="font-semibold text-lg text-foreground flex-1">
                                 {event.title}
                               </h3>
-                              {event.type && event.type !== 'panel' && (
-                                <Badge variant={getBadgeVariant(event.type)}>
-                                  {getTypeLabel(event.type)}
-                                </Badge>
-                              )}
                             </div>
 
                             {event.description && (

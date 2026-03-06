@@ -131,6 +131,7 @@ export const speakers: Speaker[] = [
     title: "Panelista",
     bio: "Consejero académico del Instituto de Victimología de Usina de Justicia (IVUJUS). Creador del Índice Legislativo de Usina de Justicia (IUJ). Licenciado en Comunicación Social (USAL) y en Psicología Social (UAJFK). Profesor de Ciencia Política (UCES). Director de la Revista IIDOS. Autor del Manual de Derechos Humanos y Garantías de las Personas Víctimas de Delito.",
     image: "/Oradores/roggero.webp",
+    objectPosition: "38% center",
     highlight: false
   },
   {
@@ -175,7 +176,7 @@ export const speakers: Speaker[] = [
     title: "Panelista",
     bio: "Secretario General del Colegio Público de la Abogacía de Capital Federal (CPACF). Consultor en política criminal y justicia penal. Magíster en Derecho Penal. Ha sido Subsecretario de Política Criminal del Ministerio de Justicia y Derechos Humanos de la Nación. Fue becario del 'Programa Interamericano de Formación de Capacitadores para la Reforma Procesal Penal' del Centro de Estudios de Justicia para las Américas (CEJA), organismo dependiente de la OEA. Ha coordinado los equipos de justicia y planes de la Fundación Pensar.",
     image: "/Oradores/casares.webp",
-    objectPosition: "center 5%",
+    objectPosition: "25% 5%",
     highlight: false
   },
   {
@@ -193,6 +194,14 @@ export const speakers: Speaker[] = [
     bio: "Miembro de la Comisión de Derecho Penal del Colegio de Abogados de la Ciudad de Buenos Aires. Doctor en Derecho (UBA). Profesor de grado y posgrado (UBA, UCEMA). Autor de numerosos artículos, destacándose en Responsabilidad penal de las personas jurídicas y compliance.",
     image: "/Oradores/castex.webp",
     objectPosition: "center",
+    highlight: false
+  },
+  {
+    id: "francisco-quintana",
+    name: "Francisco Quintana",
+    title: "Jurista y Docente Universitario",
+    bio: "Dos veces legislador de la Ciudad de Buenos Aires. Vicepresidente 1° de la Legislatura porteña (2018-2019) y presidente de la Comisión de Justicia en su primer mandato. Secretario General Nacional del PRO. Presidente de la Asamblea de Representantes del Club Atlético Boca Juniors. Docente universitario en la UCA (2007-2015).",
+    image: "/Oradores/quintana.webp",
     highlight: false
   }
 ];
